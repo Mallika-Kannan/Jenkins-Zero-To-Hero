@@ -32,9 +32,6 @@ pipeline {
             }
         }
 
-        // Other stages here...
-    }
-}
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
