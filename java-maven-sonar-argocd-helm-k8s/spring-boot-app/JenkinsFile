@@ -21,7 +21,7 @@ pipeline {
       steps {
         sh 'echo passed'
         checkout scm
-      //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
+      git branch: 'main', url: 'https://github.com/mallika-kannan/Jenkins-Zero-To-Hero.git'
       }
     }
      stage('Configure Git') {
