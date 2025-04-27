@@ -17,18 +17,26 @@ pipeline {
         '''
       }
 }
+stages {
     stage('Checkout') {
       steps {
-        sh 'echo passed'
-        checkout scm
-      git branch: 'main', url: 'https://github.com/mallika-kannan/Jenkins-Zero-To-Hero.git'
+        script {
+          // Checking out the repository
+          checkout scm
+
+          // Check if the repository is properly checked out by listing the contents
+          sh 'ls -al'
+          
+          // Verify if we're in a Git repository
+          sh 'git status'
+        }
       }
     }
-stage('Set Git User') {
+
+    stage('Set Git User') {
       steps {
-        // Make sure you're in the right directory (where the Git repo is)
         script {
-          // Using 'dir' to navigate into the workspace directory
+          // Make sure you're in the right directory (where the Git repo is)
           dir('/var/lib/jenkins/workspace/ultimate-demo') {
             // Now, run Git commands here
             sh 'git config user.email "mallika.kannan93@gmail.com"'
@@ -37,7 +45,6 @@ stage('Set Git User') {
         }
       }
     }
-
 stage('Debug') {
     steps {
         sh 'pwd' // Print the current working directory
