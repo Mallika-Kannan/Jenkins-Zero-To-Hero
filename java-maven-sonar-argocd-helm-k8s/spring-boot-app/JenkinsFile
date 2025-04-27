@@ -16,7 +16,7 @@ pipeline {
           docker --version
         '''
       }
-
+}
   stages {
     stage('Checkout') {
       steps {
