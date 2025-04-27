@@ -20,9 +20,21 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
+        checkout scm
+      //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
       }
     }
+     stage('Configure Git') {
+            steps {
+                // Make sure we're in the Git repository
+                sh 'git config --global user.email "mallika.kannan93@gmail.com"'
+                sh 'git config --global user.name "Your Name"'
+            }
+        }
+
+        // Other stages here...
+    }
+}
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
