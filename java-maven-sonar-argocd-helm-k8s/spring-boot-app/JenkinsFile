@@ -31,6 +31,12 @@ pipeline {
                 sh 'git config --global user.name "Your Name"'
             }
         }
+stage('Debug') {
+    steps {
+        sh 'pwd' // Print the current working directory
+        sh 'ls -al' // List all files and directories in the current directory
+    }
+}
 
     stage('Build and Test') {
       steps {
