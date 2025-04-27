@@ -23,6 +23,9 @@ pipeline {
           // Checking out the repository
           checkout scm
 
+	  // Mark the workspace as a safe directory for git
+          sh 'git config --global --add safe.directory /var/lib/jenkins/workspace/ultimate-demo'
+
           // Check if the repository is properly checked out by listing the contents
           sh 'ls -al'
           
