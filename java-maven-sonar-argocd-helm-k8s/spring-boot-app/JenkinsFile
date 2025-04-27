@@ -24,13 +24,20 @@ pipeline {
       git branch: 'main', url: 'https://github.com/mallika-kannan/Jenkins-Zero-To-Hero.git'
       }
     }
-     stage('Configure Git') {
-            steps {
-                // Make sure we're in the Git repository
-                sh 'git config --global user.email "mallika.kannan93@gmail.com"'
-                sh 'git config --global user.name "Your Name"'
-            }
+stage('Set Git User') {
+      steps {
+        // Make sure you're in the right directory (where the Git repo is)
+        script {
+          // Using 'dir' to navigate into the workspace directory
+          dir('/var/lib/jenkins/workspace/ultimate-demo') {
+            // Now, run Git commands here
+            sh 'git config user.email "mallika.kannan93@gmail.com"'
+            sh 'git config user.name "Your Name"'
+          }
         }
+      }
+    }
+
 stage('Debug') {
     steps {
         sh 'pwd' // Print the current working directory
